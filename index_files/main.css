@@ -1,0 +1,88 @@
+html {
+  background-color: #ffffff;   /* eeeeee */ 
+}
+
+body { 
+  font-family: 'Roboto', sans-serif, HelveticaNeue-Light, Georgia, Helvetica, Georgia, Helvetica, Arial, Verdana, san-serif, Times;
+  color: #000;
+  background-color: #ffffff; 
+  text-align:left; /* for IE */
+  margin-top: 100; 
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left:  50px;
+  padding-right: 50px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  max-width: 960px;
+}
+
+table{ background-color: #ffffff; }
+
+a, a:link, a:visited {
+  /* color: #1367a7; */
+  color: #00369f;
+  background:transparent ;
+  text-decoration: none;
+  cursor:pointer; 
+  background-color:none;
+}
+
+a:hover {
+  /* color: #208799; */
+  color: #F29105;
+  background:inherit;
+  text-decoration: underline;
+}
+
+img { border: 0; 
+}
+
+
+img.rounded-corners {
+  border-radius: 50%;
+}
+
+.aligncenter {
+  text-align: center;
+}
+
+
+
+
+h1,h2,h3,h4 { font-family:  'Roboto', sans-serif, Helvetica, Georgia,Arial,Verdana, san-serif, Times;}
+
+p { font-size: 16px;}
+
+
+/* se { font-family: 'Lato'; } */
+se { font-family: 'Roboto', sans-serif; } 
+
+.shadow {
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+
+.smallimg {
+  /* margin-top: 100px;
+  margin-bottom: 100px; */
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.smallpara {
+  /* margin-top: 100px;
+  margin-bottom: 100px; */
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+
+.paper {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 0px;
+  margin-left: 50px;
+}
