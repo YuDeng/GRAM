@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html>
+
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>GRAM</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="./files/bootstrap.min.css">
+    <link rel="stylesheet" href="./files/font-awesome.min.css">
+    <link rel="stylesheet" href="./files/codemirror.min.css">
+    <link rel="stylesheet" href="./files/app.css">
+
+
+
+
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="col-md-20 text-center">
+                <br></br>
+                <b>GRAM</b>: Generative Radiance Manifolds for 3D-Aware Image Generation<br>
+                <!-- <small>
+                    Arxiv
+                </small> -->
+            </h1>
+            <hr style="margin-top:0px">
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://YuDeng.github.io/" style="font-size: 16px;">
+                            Yu Deng
+                        </a>
+                        <sup>1</sup>
+                    </li>
+                    <li>
+                        <a href="https://jlyang.org/" style="font-size: 16px;">
+                            Jiaolong Yang
+                        </a>
+                        <sup>2</sup>
+                    </li>
+                    <li>
+                        <a style="font-size: 16px;">
+                            Jianfeng Xiang
+                        </a>
+                        <sup>3</sup>
+                    </li>
+                    <li>
+                        <a href="http://www.xtong.info/" style="font-size: 16px;">
+                            Xin Tong
+                        </a>
+                        <sup>2</sup>
+                    </li><br>
+                    <a></a><br>
+                    <li>
+                        <sup>1</sup>
+                        <a href="https://www.tsinghua.edu.cn/en/" style="font-size: 16px;">
+                            Tsinghua Unviersity
+                        </a>
+                    </li>
+                    <li>
+                        <sup>2</sup>
+                        <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/"
+                            style="font-size: 16px;">
+                            Microsoft Research Asia
+                        </a>
+                    </li>
+                    <li>
+                        <sup>3</sup>
+                        <a href="http://en.ustc.edu.cn/" style="font-size: 16px;">
+                            University of Science and Technology of China
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a>
+                            <img src="./files/paper.png" height="60px">
+                            <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a onClick="alert('code coming soon!')">
+                            <img src="./files/github.png" height="60px">
+                            <h4><strong>Code</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <a>
+                    <video height="242" playsinline autoplay loop preload muted>
+                        <source src="./files/teaser.mp4" type="video/mp4">
+                    </video>
+                </a>
+                <br></br>
+                <h2>
+                    Abstract
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    3D-aware image generative modeling aims to generate
+                    3D-consistent images with explicitly controllable camera
+                    poses. Recent works have shown promising results by training
+                    neural radiance field (NeRF) generators on unstructured
+                    2D image collections, but they still can not generate
+                    highly-realistic images with fine details. A critical reason
+                    is that the high memory and computation cost of volumetric
+                    representation learning greatly restricts the number of point
+                    samples for radiance integration during training. Deficient
+                    point sampling not only limits the expressive power of the
+                    generator to handle high-frequency details but also impedes
+                    effective GAN training due to the noise caused by unstable
+                    Monte Carlo sampling. We propose a novel approach that
+                    regulates point sampling and radiance field learning on 2D
+                    manifolds, embodied as a set of implicit surfaces in the 3D
+                    volume learned with GAN training. For each viewing ray,
+                    we calculate the ray-surface intersections and accumulate
+                    their radiance predicted by the network. We show that by
+                    training and rendering such radiance manifolds, our generator
+                    can produce high quality images with realistic fine
+                    details and strong visual 3D consistency.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Video
+                </h2>
+                <hr style="margin-top:0px">
+                <div class="text-center">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="./files/EpH175PY1A0.html" allowfullscreen=""
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Overview
+                </h2>
+                <hr style="margin-top:0px">
+                <img src="./files/framework.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify" style="font-size: 16px;">
+                    Overview of the GRAM method. The generator G consists of a manifold predictor M and a radiance
+                    generator Φ. M predicts
+                    multiple isosurfaces which define the input domain of Φ. The intersections between camera rays and
+                    the isosurfaces are
+                    sent to Φ for color and occupancy prediction. Images are then generated by compositing the color of
+                    the points along the ray.
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Generation Results
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    GRAM is able to generate high-quality images with fine details. Moreover, it allows an explicit
+                    control of camera viewpoint and achieves highly consistent results across different views.
+                    It even maintains strong visual 3D consistency for very thin structures such as bangs of hair,
+                    eyeglass, and whiskers of cat.
+                </p>
+                <video height="1000" playsinline autoplay loop preload muted>
+                    <source src="./files/result.mp4" type="video/mp4">
+                </video>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    GRAM achieves the best visual quality with realistic details and remarkable 3D consistency on
+                    multiple datasets comparing with previous 3D-aware image generation methods.
+                </p>
+                <video height="750" playsinline autoplay loop preload muted>
+                    <source src="./files/compare.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Manifolds Visualization
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    GRAM constrains point sampling and radiance field learning on 2D manifolds, embodied as a set of
+                    implicit surfaces. These implicit surfaces are shared for the trained object category, jointly
+                    learned with GAN training, and fixed at inference time.
+                </p>
+                <video height="350" playsinline autoplay loop preload muted>
+                    <source src="./files/manifold.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    3D Geometry Visualization
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    Although GRAM confines the input domain of the radiance field on 2D manifolds, we can still extract
+                    proxy 3D shapes of the generated objects using the volume-based marching cubes algorithm. It can be
+                    observed that GRAM produces high-quality geometry with detailed structures well depicted, which is
+                    the key to achieve strong visual
+                    3D consistency across different views.
+                </p>
+                <video height="380" playsinline autoplay loop preload muted>
+                    <source src="./files/shape.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <br></br>
+                <h2>
+                    Image Embedding and Editing
+                </h2>
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                GAN inversion is naturally supported by GRAM. Given an input image, we can first embed it into the learned latent space and then freely move the camera viewpoint to synthesize images at novel views.
+                </p>
+                <video height="590" playsinline autoplay loop preload muted>
+                    <source src="./files/inv2.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0">
+                <div class="text-center">
+                    <h2>
+                        Citation
+                    </h2>
+                </div>
+                <hr style="margin-top:0px">
+                <div class="form-group col-md-12 col-md-offset-0">
+                    <div class="CodeMirror cm-s-default CodeMirror-wrap" style="font-size: 16px;">
+                        <div
+                            style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 4px; ">
+                            <textarea autocorrect="off" autocapitalize="off" spellcheck="false"
+                                style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;"
+                                tabindex="0"></textarea></div>
+                        <div class="CodeMirror-vscrollbar" cm-not-content="true">
+                            <div style="min-width: 1px; height: 0px;"></div>
+                        </div>
+                        <div class="CodeMirror-hscrollbar" cm-not-content="true">
+                            <div style="height: 100%; min-height: 1px; width: 0px;"></div>
+                        </div>
+                        <div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div>
+                        <div class="CodeMirror-gutter-filler" cm-not-content="true"></div>
+                        <div class="CodeMirror-scroll" tabindex="-1">
+                            <div class="CodeMirror-sizer"
+                                style="margin-left: 0px; margin-bottom: -17px; border-right-width: 13px; min-height: 162px; padding-right: 0px; padding-bottom: 0px;">
+                                <div style="position: relative; top: 0px;">
+                                    <div class="CodeMirror-lines">
+                                        <div style="position: relative; outline: none;">
+                                            <div class="CodeMirror-measure">AخA</div>
+                                            <div class="CodeMirror-measure"></div>
+                                            <div style="position: relative; z-index: 1;"></div>
+                                            <div class="CodeMirror-cursors">
+                                                <div class="CodeMirror-cursor"
+                                                    style="left: 4px; top: 0px; height: 17.1406px;">&nbsp;</div>
+                                            </div>
+                                            <div class="CodeMirror-code" style="">
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;">@inproceedings{deng2021gram,</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  title={GRAM: Generative Radiance Manifolds </span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; for 3D-Aware Image Generation},</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  author={Deng, Yu and Yang, Jiaolong and</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Xiang, Jianfeng and Tong, Xin},</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  booktitle={arXiv},</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;"> &nbsp;  year={2021}</span></pre>
+                                                <pre
+                                                    class=" CodeMirror-line "><span style="padding-right: 0.1px;">}</span></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="position: absolute; height: 13px; width: 1px; top: 280px;"></div>
+                            <div class="CodeMirror-gutters" style="display: none; height: 300px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <hr style="margin-top:0px">
+                <p class="text-justify" style="font-size: 16px;">
+                    The website template was adapted from <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
